@@ -22,6 +22,14 @@ docker_run:
 		-p 5000:5000 \
 		-d hello-world-printer
 
+test_cov:
+	PYTHONPATH=. py.test --verbose -s --cov=.
+
+test_xunit:
+	PYTHONPATH=. py.test -s --cov=. --cov-report xml \
+		--cov-report term \
+		--junit-xml=test_results.xml
+
 USERNAME=garncarczykklaudia
 TAG=$(USERNAME)/hello-world-printer
 
